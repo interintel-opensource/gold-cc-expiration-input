@@ -27,7 +27,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         text-align: center;
       }
 
-      input[is="iron-input"] {
+      input{
         position: relative; /* to make a stacking context */
         outline: none;
         box-shadow: none;
@@ -54,15 +54,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <span aria-hidden id="yearLabel" hidden>Year</span>
 
     <div class="container">
-      <input is="iron-input"
+      <iron-input
+              prevent-invalid-input
+              aria-labelledby$="[[_computeAriaLabel(ariaLabelPrefix,'monthLabel')]]"
+              bind-value="{{month}}">
+        <input
           id="expirationMonth"
-          aria-labelledby$="[[_computeAriaLabel(ariaLabelPrefix,'monthLabel')]]"
           required$="[[required]]"
           maxlength="2"
-          bind-value="{{month}}"
           placeholder="MM"
           allowed-pattern="[0-9]"
-          prevent-invalid-input
           autocomplete="cc-exp-month"
           type="tel"
           disabled$="[[disabled]]"
@@ -70,22 +71,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           autofocus$="[[autofocus]]"
           inputmode$="[[inputmode]]"
           readonly$="[[readonly]]">
+      </iron-input>
       <span>/</span>
-      <input is="iron-input"
+      <iron-input
+              bind-value="{{year}}"
+              allowed-pattern="[0-9]"
+              prevent-invalid-input>
+        <input
           id="expirationYear"
           aria-labelledby$="[[_computeAriaLabel(ariaLabelPrefix,'yearLabel')]]"
           required$="[[required]]"
           maxlength="2"
-          bind-value="{{year}}"
           placeholder="YY"
-          allowed-pattern="[0-9]"
-          prevent-invalid-input
           autocomplete="cc-exp-year"
           type="tel"
           disabled$="[[disabled]]"
           invalid="{{invalid}}"
           inputmode$="[[inputmode]]"
-          readonly$="[[readonly]]">
+          readonly$="[[readonly]]"></iron-input>
     </div>
   </template>
 

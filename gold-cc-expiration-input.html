@@ -61,14 +61,14 @@ style this element.
 
     <paper-input-container id="container"
         no-label-float="[[noLabelFloat]]"
-        always-float-label="[[alwaysFloatLabel]]"
+        always-float-label
         attr-for-value="date"
         disabled$="[[disabled]]"
         invalid="[[invalid]]">
 
-      <label hidden$="[[!label]]">[[label]]</label>
+      <label hidden$="[[!label]]" slot="label">[[label]]</label>
 
-      <date-input class="paper-input-input" id="input"
+      <date-input class="paper-input-input" id="input" slot="input"
           aria-label-prefix="[[_ariaLabelledBy]]"
           required$="[[required]]"
           autocomplete$="[[autocomplete]]"
@@ -81,7 +81,7 @@ style this element.
       </date-input>
 
       <template is="dom-if" if="[[errorMessage]]">
-        <paper-input-error>[[errorMessage]]</paper-input-error>
+        <paper-input-error slot="add-on">[[errorMessage]]</paper-input-error>
       </template>
 
     </paper-input-container>
